@@ -17,5 +17,9 @@ namespace PackIT.Domain.ValueObjects
                 throw new EmptyPackingListNameException();
             Value = value;
         }
+
+        public static implicit operator string(PackingListName value) => value.Value;
+
+        public static implicit operator PackingListName(string name) => new(name);
     }
 }

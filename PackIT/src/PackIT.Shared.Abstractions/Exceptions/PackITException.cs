@@ -6,7 +6,5 @@ using System.Threading.Tasks;
 
 namespace PackIT.Shared.Abstractions.Exceptions
 {
-    public class PackITException(string message) : Exception(message)
-    {
-    }
+    public class PackITException(string message) : Exception(message);
 }
