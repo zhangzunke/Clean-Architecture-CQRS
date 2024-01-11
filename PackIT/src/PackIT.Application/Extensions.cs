@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using PackIT.Shared;
 using PackIT.Domain.Factories;
 using PackIT.Domain.Policies;
+using PackIT.Shared.Commands;
+using PackIT.Shared.Queries;
 
 namespace PackIT.Application
 {
@@ -15,6 +16,7 @@ namespace PackIT.Application
         public static IServiceCollection AddApplication(this IServiceCollection services)
         {
             services.AddCommands();
+            services.AddQueries();
             services.AddSingleton<IPackingListFactory, PackingListFactory>();
 
             services.Scan(b => b.FromAssemblies(typeof(IPackingItemsPolicy).Assembly)

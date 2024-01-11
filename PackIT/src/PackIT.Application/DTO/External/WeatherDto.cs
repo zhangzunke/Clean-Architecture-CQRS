@@ -4,9 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PackIT.Shared.Abstractions.Commands
+namespace PackIT.Application.DTO.External
 {
-    public interface ICommandHandler
-    {
-    }
+    public record WeatherDto(double Temperature);
 }

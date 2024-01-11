@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PackIT.Shared.Abstractions.Commands
+namespace PackIT.Application.Services
 {
-    public interface ICommandHandler
+    public interface IPackingListReadService
     {
+        Task<bool> ExistsByNameAsync(string name);
     }
 }

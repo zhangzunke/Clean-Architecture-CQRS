@@ -4,9 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PackIT.Shared.Abstractions.Commands
+namespace PackIT.Shared.Abstractions.Queries
 {
-    public interface ICommandHandler
+    public interface IQuery
     {
+    }
+
+    public interface IQuery<TResult> : IQuery
+    {
+
     }
 }
