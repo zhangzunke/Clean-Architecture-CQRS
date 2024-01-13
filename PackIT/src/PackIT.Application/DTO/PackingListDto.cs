@@ -11,6 +11,6 @@ namespace PackIT.Application.DTO
         public Guid Id { get; set; }
         public required string Name { get; set; }
         public required LocalizationDto Localization { get; set; }
-        public required IEnumerable<PackingItemDto> Items { get; set; }
+        public IEnumerable<PackingItemDto>? Items { get; set; }
     }
 }

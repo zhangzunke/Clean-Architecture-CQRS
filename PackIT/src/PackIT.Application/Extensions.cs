@@ -16,7 +16,6 @@ namespace PackIT.Application
         public static IServiceCollection AddApplication(this IServiceCollection services)
         {
             services.AddCommands();
-            services.AddQueries();
             services.AddSingleton<IPackingListFactory, PackingListFactory>();
 
             services.Scan(b => b.FromAssemblies(typeof(IPackingItemsPolicy).Assembly)
