@@ -32,7 +32,7 @@ namespace PackIT.Api
             }
 
             app.UseHttpsRedirection();
-
+            app.UseShared();
             app.UseAuthorization();
 
 

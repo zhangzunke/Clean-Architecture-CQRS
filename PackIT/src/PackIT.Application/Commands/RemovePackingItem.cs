@@ -7,5 +7,5 @@ using System.Threading.Tasks;
 
 namespace PackIT.Application.Commands
 {
-    public record RemovePackingItem(Guid PackingListId, string Name) : ICommandHandler;
+    public record RemovePackingItem(Guid PackingListId, string Name) : ICommand;
 }

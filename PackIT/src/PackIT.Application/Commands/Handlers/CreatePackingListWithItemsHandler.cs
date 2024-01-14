@@ -23,7 +23,7 @@ namespace PackIT.Application.Commands.Handlers
         private readonly IPackingListReadService _readService = readService;
         private readonly IWeatherService _weatherService = weatherService;
 
-        public async Task HanlderAsync(CreatePackingListWithItems command)
+        public async Task HandlerAsync(CreatePackingListWithItems command)
         {
             var (id, name, days, gender, localizationWriteModel) = command;
             if(await _readService.ExistsByNameAsync(command.Name))

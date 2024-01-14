@@ -12,11 +12,11 @@ namespace PackIT.Shared.Commands
     {
         private readonly IServiceProvider _serviceProvider = serviceProvider;
 
-        public async Task DispatchAsync<TCommand>(TCommand command) where TCommand : class, ICommandHandler
+        public async Task DispatchAsync<TCommand>(TCommand command) where TCommand : class, ICommand
         {
             using var scope = _serviceProvider.CreateScope();
             var handler = scope.ServiceProvider.GetRequiredService<ICommandHandler<TCommand>>();
-            await handler.HanlderAsync(command);
+            await handler.HandlerAsync(command);
         }
     }
 }

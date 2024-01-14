@@ -13,7 +13,7 @@ namespace PackIT.Application.Commands.Handlers
     {
         private readonly IPackingListRepository _repository = repository;
 
-        public async Task HanlderAsync(RemovePackingList command)
+        public async Task HandlerAsync(RemovePackingList command)
         {
             var packingList = await _repository.GetAsync(command.Id) ?? throw new PackingListNotFoundException(command.Id);
             await _repository.DeleteAsync(packingList);

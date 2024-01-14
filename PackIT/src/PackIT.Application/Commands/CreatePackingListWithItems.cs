@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace PackIT.Application.Commands
 {
     public record CreatePackingListWithItems(Guid Id, string Name, ushort Days, Gender Gender,
-        LocalizationWriteModel LocalizationWriteModel) : ICommandHandler;
+        LocalizationWriteModel LocalizationWriteModel) : ICommand;
 
 
     public record LocalizationWriteModel(string City, string Country);

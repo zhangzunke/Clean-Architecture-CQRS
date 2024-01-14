@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace PackIT.Shared.Abstractions.Commands
 {
-    public interface ICommandHandler<in TCommand> where TCommand : class, ICommandHandler
+    public interface ICommandHandler<in TCommand> where TCommand : class, ICommand
     {
-        Task HanlderAsync(TCommand command);
+        Task HandlerAsync(TCommand command);
     }
 }
