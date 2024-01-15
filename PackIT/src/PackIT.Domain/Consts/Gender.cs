@@ -9,6 +9,6 @@ namespace PackIT.Domain.Consts
     public enum Gender
     {
         Meal,
-        Femeal
+        Female
     }
 }

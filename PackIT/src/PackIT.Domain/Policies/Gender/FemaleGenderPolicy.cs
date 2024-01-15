@@ -16,6 +16,6 @@ namespace PackIT.Domain.Policies.Gender
             new("Eyeliner", 1)
         };
 
-        public bool IsApplicable(PolicyData data) => data.Gender is Consts.Gender.Femeal;
+        public bool IsApplicable(PolicyData data) => data.Gender is Consts.Gender.Female;
     }
 }
