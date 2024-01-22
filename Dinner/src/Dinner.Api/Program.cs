@@ -11,7 +11,7 @@ namespace Dinner.Api
             var builder = WebApplication.CreateBuilder(args);
 
             builder.Services.AddApplication()
-                            .AddInfrastructure();
+                            .AddInfrastructure(builder.Configuration);
 
             builder.Services.AddControllers();
             // Add services to the container.
