@@ -1,0 +1,9 @@
+﻿@Dinner.Api_HostAddress = https://localhost:7157
+
+POST {{Dinner.Api_HostAddress}}/auth/login
+Content-Type: application/json
+
+{
+    "email": "mike.zhang@126.com",
+    "password": "mike@123"
+}
