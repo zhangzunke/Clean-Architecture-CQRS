@@ -1,8 +1,6 @@
 ﻿using Dinner.Application.Services.Authentication;
 using Dinner.Contracts.Authentication;
-using ErrorOr;
 using Microsoft.AspNetCore.Mvc;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Dinner.Api.Controllers
 {
