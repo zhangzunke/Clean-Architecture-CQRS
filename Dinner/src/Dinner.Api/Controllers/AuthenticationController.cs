@@ -1,12 +1,14 @@
 ﻿using Dinner.Application.Services.Authentication;
 using Dinner.Contracts.Authentication;
+using ErrorOr;
 using Microsoft.AspNetCore.Mvc;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Dinner.Api.Controllers
 {
     [ApiController]
     [Route("auth")]
-    public class AuthenticationController(IAuthenticationService authenticationService) : ControllerBase
+    public class AuthenticationController(IAuthenticationService authenticationService) : ApiController
     {
         private readonly IAuthenticationService _authenticationService = authenticationService;
 
@@ -14,26 +16,29 @@ namespace Dinner.Api.Controllers
         public IActionResult Register(RegisterRequest request)
         {
             var authResult = _authenticationService.Register(request.FirstName, request.LastName, request.Email, request.Password);
-            var response = new AuthenticationResponse(
-                authResult.User.Id, 
-                authResult.User.FirstName, 
-                authResult.User.LastName, 
-                authResult.User.Email, 
-                authResult.Token);
-            return Ok(response);
+
+            return authResult.Match(
+                authResult => Ok(MapAuthResult(authResult)),
+                errors => Problem(errors));
         }
 
         [HttpPost("login")]
         public IActionResult Login(LoginRequest request) 
         {
             var authResult = _authenticationService.Login(request.Email, request.Password);
-            var response = new AuthenticationResponse(
+            return authResult.Match(
+                authResult => Ok(MapAuthResult(authResult)),
+                errors => Problem(errors));
+        }
+
+        private static AuthenticationResponse MapAuthResult(AuthenticationResult authResult)
+        {
+            return new AuthenticationResponse(
                 authResult.User.Id,
                 authResult.User.FirstName,
                 authResult.User.LastName,
                 authResult.User.Email,
                 authResult.Token);
-            return Ok(response);
         }
     }
 }

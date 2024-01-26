@@ -1,6 +1,11 @@
 
+using Dinner.Api.Common.Errors;
+using Dinner.Api.Filters;
+using Dinner.Api.Middleware;
 using Dinner.Application;
 using Dinner.Infrastructure;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace Dinner.Api
 {
@@ -9,11 +14,13 @@ namespace Dinner.Api
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-
+           
             builder.Services.AddApplication()
                             .AddInfrastructure(builder.Configuration);
 
+            // builder.Services.AddControllers(options => options.Filters.Add<ErrorHandlingFilterAttribute>());
             builder.Services.AddControllers();
+            builder.Services.AddSingleton<ProblemDetailsFactory, DinnerProblemDetailsFactory>();
             // Add services to the container.
             builder.Services.AddAuthorization();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -30,6 +37,8 @@ namespace Dinner.Api
                 app.UseSwaggerUI();
             }
 
+            // app.UseMiddleware<ErrorHandlingMiddleware>();
+            app.UseExceptionHandler("/error");
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
