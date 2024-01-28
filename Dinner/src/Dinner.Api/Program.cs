@@ -15,18 +15,9 @@ namespace Dinner.Api
         {
             var builder = WebApplication.CreateBuilder(args);
            
-            builder.Services.AddApplication()
+            builder.Services.AddPresentation()
+                            .AddApplication()
                             .AddInfrastructure(builder.Configuration);
-
-            // builder.Services.AddControllers(options => options.Filters.Add<ErrorHandlingFilterAttribute>());
-            builder.Services.AddControllers();
-            builder.Services.AddSingleton<ProblemDetailsFactory, DinnerProblemDetailsFactory>();
-            // Add services to the container.
-            builder.Services.AddAuthorization();
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-            builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
-            
 
             var app = builder.Build();
 

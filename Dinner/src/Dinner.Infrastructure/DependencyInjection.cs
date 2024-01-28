@@ -1,7 +1,6 @@
 ﻿using Dinner.Application.Common.Interfaces.Authentication;
 using Dinner.Application.Common.Interfaces.Persistence;
 using Dinner.Application.Common.Interfaces.Services;
-using Dinner.Application.Services.Authentication;
 using Dinner.Infrastructure.Authentication;
 using Dinner.Infrastructure.Persistence;
 using Dinner.Infrastructure.Services;
