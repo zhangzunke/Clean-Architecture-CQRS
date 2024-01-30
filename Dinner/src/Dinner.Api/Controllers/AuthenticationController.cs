@@ -4,12 +4,13 @@ using Dinner.Application.Authentication.Queries.Login;
 using Dinner.Contracts.Authentication;
 using MapsterMapper;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Dinner.Api.Controllers
 {
-    [ApiController]
     [Route("auth")]
+    [AllowAnonymous]
     public class AuthenticationController(ISender mediator, IMapper mapper) : ApiController
     {
         private readonly ISender _mediator = mediator;

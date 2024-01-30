@@ -1,11 +1,13 @@
 ﻿using Dinner.Api.Common.Http;
 using ErrorOr;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace Dinner.Api.Controllers
 {
     [ApiController]
+    [Authorize]
     public class ApiController : ControllerBase
     {
         protected IActionResult Problem(List<Error> errors)
@@ -25,7 +27,7 @@ namespace Dinner.Api.Controllers
             return Problem(error);
         }
 
-        private IActionResult Problem(Error error)
+        private ObjectResult Problem(Error error)
         {
             var statusCode = error.Type switch
             {
@@ -37,7 +39,7 @@ namespace Dinner.Api.Controllers
             return Problem(statusCode: statusCode, title: error.Description);
         }
 
-        private IActionResult ValidationProblem(List<Error> errors)
+        private ActionResult ValidationProblem(List<Error> errors)
         {
             var modelStateDictonary = new ModelStateDictionary();
             foreach (var error in errors)
