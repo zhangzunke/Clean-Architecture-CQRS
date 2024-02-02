@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 using Dinner.Application.Authentication.Common;
 using Dinner.Application.Common.Interfaces.Authentication;
 using Dinner.Application.Common.Interfaces.Persistence;
-using Dinner.Domain.Entities;
 using Dinner.Domain.Common.Errors;
 using ErrorOr;
 using MediatR;
+using Dinner.Domain.User;
 
 namespace Dinner.Application.Authentication.Queries.Login
 {

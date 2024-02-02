@@ -2,7 +2,6 @@
 using Dinner.Application.Authentication.Common;
 using Dinner.Application.Common.Interfaces.Authentication;
 using Dinner.Application.Common.Interfaces.Persistence;
-using Dinner.Domain.Entities;
 using ErrorOr;
 using MediatR;
 using System;
@@ -11,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Dinner.Domain.Common.Errors;
+using Dinner.Domain.User;
 
 namespace Dinner.Application.Authentication.Commands
 {

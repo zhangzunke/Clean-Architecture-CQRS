@@ -1,6 +1,6 @@
 ﻿using Dinner.Application.Common.Interfaces.Authentication;
 using Dinner.Application.Common.Interfaces.Services;
-using Dinner.Domain.Entities;
+using Dinner.Domain.User;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System;
