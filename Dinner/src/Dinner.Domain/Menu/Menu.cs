@@ -22,7 +22,7 @@ namespace Dinner.Domain.Menu
         public string Description { get; }
         public AverageRating AverageRating { get; }
         public HostId HostId { get; }
-        public IReadOnlyList<MenuSection> Setions => _setions.AsReadOnly();
+        public IReadOnlyList<MenuSection> Sections => _setions.AsReadOnly();
         public IReadOnlyList<DinnerId> DinnerIds => _dinnerIds.AsReadOnly();
         public IReadOnlyList<MenuReviewId> MenuReviewIds => menuReviewIds.AsReadOnly();
         public DateTime CreatedDateTime { get; }
@@ -33,6 +33,7 @@ namespace Dinner.Domain.Menu
             string description,
             HostId hostId,
             AverageRating averageRating,
+            List<MenuSection> sections,
             DateTime createdDateTime, 
             DateTime updatedDateTime) : base(menuId)
         {
@@ -40,6 +41,7 @@ namespace Dinner.Domain.Menu
             Description = description;
             HostId = hostId;
             AverageRating = averageRating;
+            _setions = sections;
             CreatedDateTime = createdDateTime;
             UpdatedDateTime = updatedDateTime;
         }
@@ -48,7 +50,8 @@ namespace Dinner.Domain.Menu
             string name,
             string description,
             HostId hostId,
-            AverageRating averageRating)
+            AverageRating averageRating,
+            List<MenuSection> sections)
         {
             return new(
                 MenuId.CreateUnique(),
@@ -56,6 +59,7 @@ namespace Dinner.Domain.Menu
                 description,
                 hostId,
                 averageRating,
+                sections,
                 DateTime.UtcNow,
                 DateTime.UtcNow);
         }

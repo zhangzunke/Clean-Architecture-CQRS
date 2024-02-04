@@ -15,6 +15,7 @@ namespace Dinner.Domain.Host.ValueObjects
         private HostId(Guid value) => Value = value;
 
         public static HostId CreateUnique() => new(Guid.NewGuid());
+        public static HostId Create(string hostId) => new(Guid.Parse(hostId));
 
         public override IEnumerable<object> GetEqualityComponents()
         {
