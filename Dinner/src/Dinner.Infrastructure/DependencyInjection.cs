@@ -3,6 +3,7 @@ using Dinner.Application.Common.Interfaces.Persistence;
 using Dinner.Application.Common.Interfaces.Services;
 using Dinner.Infrastructure.Authentication;
 using Dinner.Infrastructure.Persistence;
+using Dinner.Infrastructure.Persistence.Interceptors;
 using Dinner.Infrastructure.Persistence.Repositories;
 using Dinner.Infrastructure.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -28,6 +29,7 @@ namespace Dinner.Infrastructure
         public static IServiceCollection AddPersistance(this IServiceCollection services)
         {
             services.AddDbContext<DinnerDbContext>(options => options.UseSqlServer("Server=.;Database=Dinner;Trusted_Connection=True;TrustServerCertificate=True"));
+            services.AddScoped<PublishDomainEventsInterceptor>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IMenuRepository, MenuRepository>();
             return services;

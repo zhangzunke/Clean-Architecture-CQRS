@@ -3,6 +3,7 @@ using Dinner.Domain.Common.ValueObjects;
 using Dinner.Domain.Dinner.ValueObjects;
 using Dinner.Domain.Host.ValueObjects;
 using Dinner.Domain.Menu.Entities;
+using Dinner.Domain.Menu.Events;
 using Dinner.Domain.Menu.ValueObjects;
 using Dinner.Domain.MenuReview.ValueObjects;
 using System;
@@ -53,7 +54,7 @@ namespace Dinner.Domain.Menu
             AverageRating averageRating,
             List<MenuSection> sections)
         {
-            return new(
+            var menu = new Menu(
                 MenuId.CreateUnique(),
                 name,
                 description,
@@ -62,6 +63,10 @@ namespace Dinner.Domain.Menu
                 sections,
                 DateTime.UtcNow,
                 DateTime.UtcNow);
+
+            menu.AddDomainEvent(new MenuCreated(menu));
+
+            return menu;
         }
 
 #pragma warning disable CS8618

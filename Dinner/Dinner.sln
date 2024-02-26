@@ -3,15 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34322.80
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dinner.Api", "src\Dinner.Api\Dinner.Api.csproj", "{3010319E-195E-4C6E-BA98-FC757D507BD7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dinner.Api", "src\Dinner.Api\Dinner.Api.csproj", "{3010319E-195E-4C6E-BA98-FC757D507BD7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dinner.Application", "src\Dinner.Application\Dinner.Application.csproj", "{DFAA1159-2DEA-4EC2-ABB9-FF9ED070DBD6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dinner.Application", "src\Dinner.Application\Dinner.Application.csproj", "{DFAA1159-2DEA-4EC2-ABB9-FF9ED070DBD6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dinner.Contracts", "src\Dinner.Contracts\Dinner.Contracts.csproj", "{04FC9671-2840-4D63-87B3-5EBE070886C0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dinner.Contracts", "src\Dinner.Contracts\Dinner.Contracts.csproj", "{04FC9671-2840-4D63-87B3-5EBE070886C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dinner.Domain", "src\Dinner.Domain\Dinner.Domain.csproj", "{072E65FE-E699-4966-A201-1797AD612B9F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dinner.Domain", "src\Dinner.Domain\Dinner.Domain.csproj", "{072E65FE-E699-4966-A201-1797AD612B9F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dinner.Infrastructure", "src\Dinner.Infrastructure\Dinner.Infrastructure.csproj", "{72B59207-4B54-47DA-99C5-877F5DCB586D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dinner.Infrastructure", "src\Dinner.Infrastructure\Dinner.Infrastructure.csproj", "{72B59207-4B54-47DA-99C5-877F5DCB586D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dinner.Application.UnitTests", "test\Dinner.Application.UnitTests\Dinner.Application.UnitTests.csproj", "{C970054B-1C08-456E-AA3E-385DF18213D8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{42D2A3C6-BE65-4952-B8B5-35C1EF66C545}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{983E1970-603E-4CE8-8D74-AC3B4B5DE46D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,9 +45,21 @@ Global
 		{72B59207-4B54-47DA-99C5-877F5DCB586D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{72B59207-4B54-47DA-99C5-877F5DCB586D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{72B59207-4B54-47DA-99C5-877F5DCB586D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C970054B-1C08-456E-AA3E-385DF18213D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C970054B-1C08-456E-AA3E-385DF18213D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C970054B-1C08-456E-AA3E-385DF18213D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C970054B-1C08-456E-AA3E-385DF18213D8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3010319E-195E-4C6E-BA98-FC757D507BD7} = {983E1970-603E-4CE8-8D74-AC3B4B5DE46D}
+		{DFAA1159-2DEA-4EC2-ABB9-FF9ED070DBD6} = {983E1970-603E-4CE8-8D74-AC3B4B5DE46D}
+		{04FC9671-2840-4D63-87B3-5EBE070886C0} = {983E1970-603E-4CE8-8D74-AC3B4B5DE46D}
+		{072E65FE-E699-4966-A201-1797AD612B9F} = {983E1970-603E-4CE8-8D74-AC3B4B5DE46D}
+		{72B59207-4B54-47DA-99C5-877F5DCB586D} = {983E1970-603E-4CE8-8D74-AC3B4B5DE46D}
+		{C970054B-1C08-456E-AA3E-385DF18213D8} = {42D2A3C6-BE65-4952-B8B5-35C1EF66C545}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {906833EB-AA68-48C4-A732-563D0515839B}

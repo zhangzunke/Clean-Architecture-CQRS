@@ -6,9 +6,12 @@ using System.Threading.Tasks;
 
 namespace Dinner.Domain.Common.Models
 {
-    public abstract class Entity<TKey> : IEquatable<Entity<TKey>> where TKey : notnull
+    public abstract class Entity<TKey> : IEquatable<Entity<TKey>>, IHasDomainEvents 
+        where TKey : notnull
     {
+        private readonly List<IDomainEvent> _domainEvents = new();
         public TKey Id { get; protected set; }
+        public IReadOnlyList<IDomainEvent> DomainEvents => _domainEvents.AsReadOnly();
         protected Entity(TKey id) => Id = id;
 
         public override bool Equals(object? obj)
@@ -27,6 +30,16 @@ namespace Dinner.Domain.Common.Models
         public override int GetHashCode()
         {
             return Id.GetHashCode();
+        }
+
+        public void AddDomainEvent(IDomainEvent domainEvnet)
+        {
+            _domainEvents.Add(domainEvnet);
+        }
+
+        public void ClearDomainEvents()
+        {
+            _domainEvents.Clear();
         }
 
 #pragma warning disable CS8618
