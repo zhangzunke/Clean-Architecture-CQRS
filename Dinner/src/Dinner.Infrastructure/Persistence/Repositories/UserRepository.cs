@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Dinner.Infrastructure.Persistence
+namespace Dinner.Infrastructure.Persistence.Repositories
 {
     public class UserRepository : IUserRepository
     {

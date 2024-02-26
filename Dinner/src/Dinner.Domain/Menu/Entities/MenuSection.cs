@@ -38,5 +38,11 @@ namespace Dinner.Domain.Menu.Entities
                 items);
         }
 
+#pragma warning disable CS8618
+        private MenuSection()
+        {
+
+        }
+#pragma warning restore CS8618
     }
 }

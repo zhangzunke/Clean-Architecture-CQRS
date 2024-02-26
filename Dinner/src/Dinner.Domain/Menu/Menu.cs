@@ -21,7 +21,7 @@ namespace Dinner.Domain.Menu
         public string Name { get; }
         public string Description { get; }
         public AverageRating AverageRating { get; }
-        public HostId HostId { get; }
+        public HostId HostId { get;  }
         public IReadOnlyList<MenuSection> Sections => _setions.AsReadOnly();
         public IReadOnlyList<DinnerId> DinnerIds => _dinnerIds.AsReadOnly();
         public IReadOnlyList<MenuReviewId> MenuReviewIds => menuReviewIds.AsReadOnly();
@@ -63,5 +63,12 @@ namespace Dinner.Domain.Menu
                 DateTime.UtcNow,
                 DateTime.UtcNow);
         }
+
+#pragma warning disable CS8618
+        private Menu()
+        {
+
+        }
+#pragma warning restore CS8618
     }
 }

@@ -6,14 +6,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Dinner.Infrastructure.Persistence
+namespace Dinner.Infrastructure.Persistence.Repositories
 {
     public class MenuRepository : IMenuRepository
     {
-        private static readonly List<Menu> _menus = new();
+        private readonly DinnerDbContext _dbContext;
+        public MenuRepository(DinnerDbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
         public void Add(Menu menu)
         {
-            _menus.Add(menu);
+            _dbContext.Menus.Add(menu);
+            _dbContext.SaveChanges();
         }
     }
 }

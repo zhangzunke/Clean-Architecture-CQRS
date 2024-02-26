@@ -22,5 +22,12 @@ namespace Dinner.Domain.Menu.Entities
 
         public static MenuItem Create(string name, string description) 
             => new(MenuItemId.CreateUnique(), name, description);
+
+#pragma warning disable CS8618
+        protected MenuItem()
+        {
+
+        }
+#pragma warning restore CS8618
     }
 }

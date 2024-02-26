@@ -14,6 +14,7 @@ namespace Dinner.Domain.Menu.ValueObjects
         private MenuItemId(Guid value) => Value = value;
 
         public static MenuItemId CreateUnique() => new(Guid.NewGuid());
+        public static MenuItemId Create(Guid id) => new(id);
 
         public override IEnumerable<object> GetEqualityComponents()
         {
