@@ -6,4 +6,20 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Posts\Commands\" />
+    <Folder Include="Posts\CommandHandlers\" />
+    <Folder Include="Posts\QueryHandlers\" />
+    <Folder Include="Posts\Queries\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MediatR" Version="12.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Social.Domain\Social.Domain.csproj" />
+    <ProjectReference Include="..\Social.Infrastructure\Social.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -8,10 +8,10 @@ namespace Social.Api.Registrars
     {
         public void RegisterServices(WebApplicationBuilder builder)
         {
-            var cs = builder.Configuration.GetConnectionString("Default");
+            var connectionString = builder.Configuration.GetConnectionString("Default");
             builder.Services.AddDbContext<DataContext>(options =>
             {
-                options.UseSqlServer(cs);
+                options.UseSqlServer(connectionString);
             });
         }
     }
