@@ -30,7 +30,7 @@ namespace Social.Api.Controllers.V1
         {
             var query = new GetAllUserProfiles();
             var response = await _mediator.Send(query);
-            var profiles = _mapper.Map<List<UserProfileResponse>>(response);
+            var profiles = _mapper.Map<List<UserProfileResponse>>(response.Payload);
             return Ok(profiles);
         }
 
@@ -39,7 +39,7 @@ namespace Social.Api.Controllers.V1
         {
             var command = _mapper.Map<CreateUserCommand>(profile);
             var response = await _mediator.Send(command);
-            var userProfile = _mapper.Map<UserProfileResponse>(response);
+            var userProfile = _mapper.Map<UserProfileResponse>(response.Payload);
             return CreatedAtAction(nameof(GetUserProfileById), new { id = userProfile.UserProfileId }, userProfile);
         }
 
@@ -49,9 +49,11 @@ namespace Social.Api.Controllers.V1
         {
             var query = new GetUserProfileById { UserProfileId = Guid.Parse(id) };
             var response = await _mediator.Send(query);
-            if (response is null)
-                return NotFound();
-            var userProfile = _mapper.Map<UserProfileResponse>(response);
+            if (response.IsError)
+            {
+                return HandleErrorResponse(response.Errors);
+            }
+            var userProfile = _mapper.Map<UserProfileResponse>(response.Payload);
             return Ok(userProfile);
         }
 
@@ -66,7 +68,7 @@ namespace Social.Api.Controllers.V1
             {
                 return HandleErrorResponse(response.Errors);
             }
-            var userProfile = _mapper.Map<UserProfileResponse>(response);
+            var userProfile = _mapper.Map<UserProfileResponse>(response.Payload);
             return Ok(userProfile);
         }
 
@@ -75,8 +77,12 @@ namespace Social.Api.Controllers.V1
         public async Task<IActionResult> DeleteUserProfile(string id)
         {
             var command = new DeleteUserCommand { UserProfileId = Guid.Parse(id) };
-            await _mediator.Send(command);
-            return Ok();
+            var response = await _mediator.Send(command);
+            if(response.IsError)
+            {
+                return HandleErrorResponse(response.Errors);
+            }
+            return NoContent();
         }
     }
 }
