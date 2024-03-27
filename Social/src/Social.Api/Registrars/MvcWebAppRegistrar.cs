@@ -1,5 +1,6 @@
 ﻿
 using Asp.Versioning.ApiExplorer;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace Social.Api.Registrars
 {

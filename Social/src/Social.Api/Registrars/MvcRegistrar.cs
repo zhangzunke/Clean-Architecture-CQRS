@@ -1,5 +1,7 @@
 ﻿
 using Asp.Versioning;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Social.Api.Filters;
 
 namespace Social.Api.Registrars
 {
@@ -7,7 +9,10 @@ namespace Social.Api.Registrars
     {
         public void RegisterServices(WebApplicationBuilder builder)
         {
-            builder.Services.AddControllers();
+            builder.Services.AddControllers(options => 
+            {
+                options.Filters.Add<SocialExceptionHandler>();
+            });
 
             builder.Services.AddApiVersioning(config =>
             {

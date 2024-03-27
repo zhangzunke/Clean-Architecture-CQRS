@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Social.Api.Contracts.Common;
 using Social.Api.Contracts.UserProfile.Requests;
 using Social.Api.Contracts.UserProfile.Responses;
+using Social.Api.Filters;
 using Social.Application.Enums;
 using Social.Application.UserProfiles.Commands;
 using Social.Application.UserProfiles.Queries;
@@ -35,6 +36,7 @@ namespace Social.Api.Controllers.V1
         }
 
         [HttpPost]
+        [ValidateModel]
         public async Task<ActionResult> CreateUserProfile([FromBody] UserProfileCreateUpdate profile)
         {
             var command = _mapper.Map<CreateUserCommand>(profile);
@@ -59,6 +61,8 @@ namespace Social.Api.Controllers.V1
 
         [Route(ApiRoutes.UserProfiles.IdRoute)]
         [HttpPatch]
+        [ValidateGuid("id")]
+        [ValidateModel]
         public async Task<IActionResult> UpdateUserProfile(string id, UserProfileCreateUpdate userProfileCreateUpdate)
         {
             var command = _mapper.Map<UpdateUserCommand>(userProfileCreateUpdate);
