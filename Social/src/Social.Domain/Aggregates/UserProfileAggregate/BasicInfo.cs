@@ -35,5 +35,23 @@ namespace Social.Domain.Aggregates.UserProfileAggregate
 
             return basicInfo;
         }
+
+        public static bool TryCreate(string firstName, string lastName, string emailAddress,
+            string phone, DateTime dateOfBirth, string currentCity, out BasicInfo info)
+        {
+            var basicInfo = new BasicInfo
+            {
+                FirstName = firstName,
+                LastName = lastName,
+                EmailAddress = emailAddress,
+                Phone = phone,
+                DateOfBirth = dateOfBirth,
+                CurrentCity = currentCity
+            };
+
+            info = basicInfo;
+
+            return true;
+        }
     }
 }
